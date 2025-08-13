@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather App</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gradient-to-b from-sky-100 to-blue-200 min-h-screen flex items-center justify-center">
+
+<div class="bg-white shadow-lg rounded-lg p-8 max-w-md w-full">
+    <h1 class="text-3xl font-bold text-center text-gray-800 mb-6">🌤 Weather App</h1>
+    
+    <form method="POST" class="flex flex-col items-center">
+        {% csrf_token %}
+        <input type="text" name="city" placeholder="Enter city" 
+               class="border border-gray-300 rounded-lg px-4 py-2 w-full mb-4 focus:outline-none focus:ring-2 focus:ring-blue-400"
+               required>
+        <button type="submit" 
+                class="bg-blue-500 text-white px-6 py-2 rounded-lg hover:bg-blue-600 transition">
+            Get Weather
+        </button>
+    </form>
+
+    {% if weather_data %}
+        <div class="mt-6 text-center">
+            {% if weather_data.error %}
+                <p class="text-red-500 font-semibold">{{ weather_data.error }}</p>
+            {% else %}
+                <h3 class="text-xl font-semibold">{{ weather_data.city }}</h3>
+                <h4 class="text-2xl font-bold">{{ weather_data.temperature }}°C</h4>
+                <p class="capitalize text-gray-600">{{ weather_data.description }}</p>
+                <p class="text-gray-500">Humidity: {{ weather_data.humidity }}%</p>
+                <img src="http://openweathermap.org/img/wn/{{ weather_data.icon }}@2x.png" 
+                     alt="Weather icon" class="mx-auto mt-2">
+            {% endif %}
+        </div>
+    {% endif %}
+</div>
+
+</body>
+</html>
