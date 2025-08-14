@@ -31,6 +31,7 @@
                 <h4 class="text-2xl font-bold">{{ weather_data.temperature }}°C</h4>
                 <p class="capitalize text-gray-600">{{ weather_data.description }}</p>
                 <p class="text-gray-500">Humidity: {{ weather_data.humidity }}%</p>
+                <p class="text-gray-500">Feels Like: {{ weather_data.feels_like }}°C</p>
                 <img src="http://openweathermap.org/img/wn/{{ weather_data.icon }}@2x.png" 
                      alt="Weather icon" class="mx-auto mt-2">
             {% endif %}
