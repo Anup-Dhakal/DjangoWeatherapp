@@ -126,4 +126,4 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 
-OPENWEATHER_API_KEY = "5165eaca0c8b511456aed2a154eef257"
+OPENWEATHER_API_KEY = "3af4a465809e063d490f6e0763d051be"
